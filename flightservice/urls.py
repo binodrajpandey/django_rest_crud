@@ -18,6 +18,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from flightapp.views import FlightViewSet, PassengerViewSet, ReservationViewSet
 from flightapp import views
+import fbvApp
 
 router = DefaultRouter()
 router.register('flights',FlightViewSet)
@@ -26,6 +27,8 @@ router.register('reservations', ReservationViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('firstApp/', include('firstApp.urls')),
+    path('students/', include('fbvApp.urls')),
     path('flightServices/', include(router.urls)),
     path('flightServices/findFlights/',views.find_flights),
     path('flightServices/saveReservations/', views.save_reservation)
